@@ -12,7 +12,7 @@ Task("Package")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    NuGetPack("./FluentMigrator.CommandGenerator.nuspec", new NuGetPackSettings
+    NuGetPack("./SlivNet.FluentMigrator.Generator.nuspec", new NuGetPackSettings
     {
         OutputDirectory = artifactsDir,
     });
