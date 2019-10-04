@@ -1,4 +1,4 @@
-function Add-FluentMigration
+function Add-CommandMigration
 {
     [CmdletBinding(DefaultParameterSetName = 'Name')]
     param (
@@ -42,7 +42,7 @@ function Add-FluentMigration
 namespace $namespace
 {
     [Migration($timestamp)]
-    public class $name : Migration
+    public class $name : DatabaseMigrationBase
     {
         public override void Up()
         {
@@ -58,4 +58,4 @@ namespace $namespace
     $project.Save($null)
 }
 
-Export-ModuleMember @( 'Add-FluentMigration' )
+Export-ModuleMember @( 'Add-CommandMigration' )
