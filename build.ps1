@@ -233,4 +233,6 @@ $cakeArguments += $ScriptArgs
 # Start Cake
 Write-Host "Running build script..."
 &$CAKE_EXE $cakeArguments
+Read-Host -Prompt "Press Enter to exit"
 exit $LASTEXITCODE
+
