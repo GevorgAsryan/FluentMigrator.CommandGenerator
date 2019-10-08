@@ -105,6 +105,7 @@ function migrate-sql
     }
 
     "using FluentMigrator;
+using Kofile.Vanguard.Database.Migrator.Utils;
 
 namespace $namespace
 {
@@ -113,7 +114,7 @@ namespace $namespace
     {
         public override void Up()
         {
-            Execute.Script(@""$sqlDirectoryAfterBuild"");
+            Execute.Sql(SqlResolver.GetMigrationSqlWithCurrentTenantSchema(@""$sqlDirectoryAfterBuild""));
         }
 
         public override void Down()
