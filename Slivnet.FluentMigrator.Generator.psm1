@@ -95,7 +95,7 @@ function migrate-sql
     $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls")
     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
     $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_$name.sql")
-
+    $sqlDirectoryAfterBuild = "Sqls/"+ "$timestamp" + "_$name.sql"
 
     # Creating Migration File
 
@@ -113,7 +113,7 @@ namespace $namespace
     {
         public override void Up()
         {
-            Execute.Script();
+            Execute.Script(@""$sqlDirectoryAfterBuild"");
         }
 
         public override void Down()
