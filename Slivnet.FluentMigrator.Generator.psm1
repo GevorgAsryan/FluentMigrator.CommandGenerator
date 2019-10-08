@@ -92,7 +92,12 @@ function migrate-sql
     $namespace = $project.Properties.Item("DefaultNamespace").Value.ToString() + ".Migrations"
     $projectPath = [System.IO.Path]::GetDirectoryName($project.FullName)
     $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations")
-    $outputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
+    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls")
+    $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
+    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_$name.sql")
+
+
+    # Creating Migration File
 
     if (-not (Test-Path $migrationsPath))
     {
@@ -108,17 +113,30 @@ namespace $namespace
     {
         public override void Up()
         {
-            asdasdsadasd
+            Execute.Script();
         }
 
         public override void Down()
         {
         }
     }
-}" | Out-File -Encoding "UTF8" -Force $outputPath
+}" | Out-File -Encoding "UTF8" -Force $migrationoutputPath
 
-    $project.ProjectItems.AddFromFile($outputPath)
+    $project.ProjectItems.AddFromFile($migrationoutputPath)
     $project.Save($null)
+
+    # Create Sql File 
+        if (-not (Test-Path $sqlMigrationPath))
+    {
+        [System.IO.Directory]::CreateDirectory($sqlMigrationPath)
+    }
+
+    "-- please alter database object if you want to change existing objects" | Out-File -Encoding "UTF8" -Force $sqloutputPath
+
+    $project.ProjectItems.AddFromFile($sqloutputPath)
+    $project.Save($null)
+
+
 }
 
 Export-ModuleMember @( 'migrate-empty' )
