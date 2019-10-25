@@ -31,6 +31,7 @@ function migrate-empty
     $projectPath = [System.IO.Path]::GetDirectoryName($project.FullName)
     $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations")
     $outputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
+    $name_timestamp = $name + "_" + $timestamp
 
     if (-not (Test-Path $migrationsPath))
     {
@@ -42,7 +43,7 @@ function migrate-empty
 namespace $namespace
 {
     [Migration($timestamp)]
-    public class $name : DatabaseMigrationBase
+    public class $name_timestamp : DatabaseMigrationBase
     {
         public override void Up()
         {
@@ -95,7 +96,7 @@ function migrate-multi-schema-sql
     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
     $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_$name.sql")
     $sqlDirectoryAfterBuild = "Sqls/"+ "$timestamp" + "_$name.sql"
-
+    $name_timestamp = $name + "_" + $timestamp
     # Creating Migration File
 
     if (-not (Test-Path $migrationsPath))
@@ -110,7 +111,7 @@ namespace $namespace
 {
     [Tags(""TENANT"")]
     [Migration($timestamp)]
-    public class $name : DatabaseMigrationBase
+    public class $name_timestamp : DatabaseMigrationBase
     {
         public override void Up()
         {
@@ -177,6 +178,7 @@ function migrate-vanguard-schema-sql
     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
     $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_VANGUARD" + "_$name.sql")
     $sqlDirectoryAfterBuild = "Sqls/VANGUARD/"+ "$timestamp" + "_VANGUARD" + "_$name.sql"
+    $name_timestamp = $name + "_" + $timestamp
 
     # Creating Migration File
 
@@ -192,7 +194,7 @@ namespace $namespace
 {
     [Tags(""VANGUARD"")]
     [Migration($timestamp)]
-    public class $name : DatabaseMigrationBase
+    public class $name_timestamp : DatabaseMigrationBase
     {
         public override void Up()
         {
@@ -260,7 +262,7 @@ function migrate-single-schema-sql
     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
     $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_ONCE" + "_$name.sql")
     $sqlDirectoryAfterBuild = "Sqls/ONCE/"+ "$timestamp" + "_ONCE" + "_$name.sql"
-
+    $name_timestamp = $name + "_" + $timestamp
     # Creating Migration File
 
     if (-not (Test-Path $migrationsPath))
@@ -275,7 +277,7 @@ namespace $namespace
 {
     [Tags(""ONCE"")]
     [Migration($timestamp)]
-    public class $name : DatabaseMigrationBase
+    public class $name_timestamp : DatabaseMigrationBase
     {
         public override void Up()
         {
