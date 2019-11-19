@@ -91,11 +91,11 @@ function migrate-tenant-sql
 
     $namespace = $project.Properties.Item("DefaultNamespace").Value.ToString() + ".Migrations"
     $projectPath = [System.IO.Path]::GetDirectoryName($project.FullName)
-    $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations/TENANT")
-    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls/TENANT")
-    $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_TENANT" +"_$name.cs")
-    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_TENANT" + "_$name.sql")
-    $sqlDirectoryAfterBuild = "Sqls/TENANT/"+ "$timestamp" + "_TENANT" + "_$name.sql"
+    $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations\TENANT")
+    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls\TENANT")
+    $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
+    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_$name.sql")
+    $sqlDirectoryAfterBuild = "Sqls\TENANT\"+ "$timestamp" + "_$name.sql"
     $name_timestamp = $name + "_" + $timestamp
     # Creating Migration File
 
@@ -172,11 +172,11 @@ namespace $namespace
 
 #     $namespace = $project.Properties.Item("DefaultNamespace").Value.ToString() + ".Migrations"
 #     $projectPath = [System.IO.Path]::GetDirectoryName($project.FullName)
-#     $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations/CALIFORNIA")
-#     $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls/CALIFORNIA")
+#     $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations\CALIFORNIA")
+#     $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls\CALIFORNIA")
 #     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_CALIFORNIA" +"_$name.cs")
 #     $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp"+ "_CALIFORNIA" + "_$name.sql")
-#     $sqlDirectoryAfterBuild = "Sqls/CALIFORNIA/"+ "$timestamp" + "_CALIFORNIA" + "_$name.sql"
+#     $sqlDirectoryAfterBuild = "Sqls\CALIFORNIA\"+ "$timestamp" + "_CALIFORNIA" + "_$name.sql"
 #     $name_timestamp = $name + "_" + $timestamp
 #     # Creating Migration File
 
@@ -253,11 +253,11 @@ function migrate-vanguard-schema-sql
 
     $namespace = $project.Properties.Item("DefaultNamespace").Value.ToString() + ".Migrations"
     $projectPath = [System.IO.Path]::GetDirectoryName($project.FullName)
-    $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations/VANGUARD")
-    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls/VANGUARD")
+    $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations\VANGUARD")
+    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls\VANGUARD")
     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
-    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_VANGUARD" + "_$name.sql")
-    $sqlDirectoryAfterBuild = "Sqls/VANGUARD/"+ "$timestamp" + "_VANGUARD" + "_$name.sql"
+    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_$name.sql")
+    $sqlDirectoryAfterBuild = "Sqls\VANGUARD\"+ "$timestamp" + "_$name.sql"
     $name_timestamp = $name + "_" + $timestamp
 
     # Creating Migration File
@@ -337,11 +337,11 @@ function migrate-single-schema-sql
 
     $namespace = $project.Properties.Item("DefaultNamespace").Value.ToString() + ".Migrations"
     $projectPath = [System.IO.Path]::GetDirectoryName($project.FullName)
-    $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations/ONCE")
-    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls/ONCE")
+    $migrationsPath = [System.IO.Path]::Combine($projectPath, "Migrations\ONCE")
+    $sqlMigrationPath = [System.IO.Path]::Combine($projectPath, "Sqls\ONCE")
     $migrationoutputPath = [System.IO.Path]::Combine($migrationsPath, "$timestamp" + "_$name.cs")
-    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_ONCE" + "_$name.sql")
-    $sqlDirectoryAfterBuild = "Sqls/ONCE/"+ "$timestamp" + "_ONCE" + "_$name.sql"
+    $sqloutputPath = [System.IO.Path]::Combine($sqlMigrationPath, "$timestamp" + "_$name.sql")
+    $sqlDirectoryAfterBuild = "Sqls\ONCE\"+ "$timestamp" + "_$name.sql"
     $name_timestamp = $name + "_" + $timestamp
     # Creating Migration File
 
